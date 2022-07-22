@@ -22,6 +22,7 @@ router.post("/register",async (req, res) => {
 
     }catch(err){
         console.log('Error at registration post route ...the error is ',err);
+        res.status(500).json(err);
     }
 })
 
@@ -38,6 +39,7 @@ router.post("/login",async (req,res) =>{
         res.status(200).json(user)
     }catch(err){
         console.log('Error at login post route..the error is ',err);
+        res.status(500).json(err)
     }
 });
 
