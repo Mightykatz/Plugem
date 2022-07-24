@@ -6,6 +6,7 @@ const helmet = require("helmet");
 const morgan = require("morgan");
 const userRoute = require("./routes/users");
 const authRoute = require("./routes/auth");
+const postRoute = require("./routes/posts");
 
 //configure dotenv to enable library usage
 dotenv.config();
@@ -35,6 +36,7 @@ app.use(morgan("common"));
 //Routes
 app.use("/api/users", userRoute);
 app.use("/api/auth", authRoute);
+app.use("/api/posts",postRoute);
 
 //Create the port that will host the application
 app.listen(8800,()=>{
