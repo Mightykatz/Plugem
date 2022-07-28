@@ -7,6 +7,8 @@
     /*make the top container to stick at top even whe scrolling*/
     position: sticky;
     top: 0;
+    /*fix: online users bar shouldn't overlap the top bar*/
+    z-index: 999;
 }
 /*Devide the topContainer into 12 parts
 3 topleft, 5topCenter and 4 topRight

@@ -4,6 +4,9 @@
     height: calc(100vh - 50px);
     /*Scroll only of side bar and not the whole feed/website*/
     overflow-y: scroll;
+    /*Prevent it from scrollin entire side bar up*/
+    position: sticky;
+    top: 15px;
 }
 
 /*make the scroll bar much more thin*/
