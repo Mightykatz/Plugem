@@ -1,5 +1,7 @@
 import "./sidebar.css"
 import { Feed,Chat,Group,Bookmark,Help,Event,School,Work } from "@mui/icons-material"
+import { Users } from "../../dummyData"
+import Showmore from "../showmore/Showmore"
 
 export default function Sidebar(){
     return(
@@ -42,30 +44,9 @@ export default function Sidebar(){
                 <button className="sidebarButton">Show more</button>
                 <hr className="sidebarHr" />
                 <ul className="sidebarFriendList">
-                    <li className="sidebarFriend">
-                        <img src="/assets/person/2.jpg" alt="" className="sidebarFriendImg" />
-                        <span className="sidebarFriendName">Emma Johnson</span>
-                    </li>
-                    <li className="sidebarFriend">
-                        <img src="/assets/person/3.jpg" alt="" className="sidebarFriendImg" />
-                        <span className="sidebarFriendName">Mbali scott</span>
-                    </li>
-                    <li className="sidebarFriend">
-                        <img src="/assets/person/4.jpg" alt="" className="sidebarFriendImg" />
-                        <span className="sidebarFriendName">Jeffery Basoni</span>
-                    </li>
-                    <li className="sidebarFriend">
-                        <img src="/assets/person/5.jpg" alt="" className="sidebarFriendImg" />
-                        <span className="sidebarFriendName">Michael Kgomu</span>
-                    </li>
-                    <li className="sidebarFriend">
-                        <img src="/assets/person/6.jpg" alt="" className="sidebarFriendImg" />
-                        <span className="sidebarFriendName">Hugh Mahlangu</span>
-                    </li>
-                    <li className="sidebarFriend">
-                        <img src="/assets/person/7.jpg" alt="" className="sidebarFriendImg" />
-                        <span className="sidebarFriendName">50 cent</span>
-                    </li>
+                    {Users.map(u=>(
+                        <Showmore key={u.id} user={u} />
+                    ))}
                 </ul>
             </div>
         </div>

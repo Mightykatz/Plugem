@@ -1,5 +1,8 @@
 import "./rightbar.css"
 
+import {Users} from "../../dummyData"
+import Online from "../online/Online"
+
 export default function Rightbar(){
     return(
         <div className="rightbar">
@@ -13,48 +16,9 @@ export default function Rightbar(){
                 <img className="rightbarAd" src="/assets/ad.png" alt="" />
                 <h4 className="rightbarTitle">online friends</h4>
                 <ul className="rightbarFriendlist">
-                    <li className="rightbarFiend">
-                        <div className="rightbarProfileImgContainer">
-                            <img className="rightbarProfileImg" src="/assets/person/5.jpg" alt="" />
-                            <span className="rightbarOnline"></span>
-                        </div>
-                        <span className="rightbarUserName">Theadore Bagwell</span>
-                    </li> 
-                    <li className="rightbarFiend">
-                        <div className="rightbarProfileImgContainer">
-                            <img className="rightbarProfileImg" src="/assets/person/8.jpeg" alt="" />
-                            <span className="rightbarOnline"></span>
-                        </div>
-                        <span className="rightbarUserName">Damon Salvator</span>
-                    </li>
-                    <li className="rightbarFiend">
-                        <div className="rightbarProfileImgContainer">
-                            <img className="rightbarProfileImg" src="/assets/person/6.jpg" alt="" />
-                            <span className="rightbarOnline"></span>
-                        </div>
-                        <span className="rightbarUserName">Wakanda King</span>
-                    </li>
-                    <li className="rightbarFiend">
-                        <div className="rightbarProfileImgContainer">
-                            <img className="rightbarProfileImg" src="/assets/person/2.jpg" alt="" />
-                            <span className="rightbarOnline"></span>
-                        </div>
-                        <span className="rightbarUserName">Lizzy Whittaker</span>
-                    </li>
-                    <li className="rightbarFiend">
-                        <div className="rightbarProfileImgContainer">
-                            <img className="rightbarProfileImg" src="/assets/person/9.jpg" alt="" />
-                            <span className="rightbarOnline"></span>
-                        </div>
-                        <span className="rightbarUserName">Stiles Stilinskie</span>
-                    </li>
-                    <li className="rightbarFiend">
-                        <div className="rightbarProfileImgContainer">
-                            <img className="rightbarProfileImg" src="/assets/person/7.jpg" alt="" />
-                            <span className="rightbarOnline"></span>
-                        </div>
-                        <span className="rightbarUserName">Swagger Givenchy</span>
-                    </li>
+                    {Users.map(u=>(
+                        <Online key={u.id} user={u}/>
+                    ))}
                 </ul>            
             </div>
         </div>
