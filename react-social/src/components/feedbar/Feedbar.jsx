@@ -1,7 +1,7 @@
 import Post from "../post/Post"
 import Share from "../share/Share"
 import "./feedbar.css"
-/*step 2*/
+
 import {Posts} from "../../dummyData" 
 
 export default function Feedbar(){

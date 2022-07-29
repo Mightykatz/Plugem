@@ -1,11 +1,23 @@
 import "./post.css"
 import {MoreVert} from "@mui/icons-material"
-/*step 3 ,take in the post as parameter*/
 
-/*step 4 fetch all the users and filter them*/
 import {Users} from "../../dummyData"
+import { useState } from "react"
 
 export default function Post({post}){
+    /*initial state is goin to be whatever number the post is set to initialy in the class*/ 
+    const [like,setLike] = useState(post.like)
+    const [isliked,setIsLiked] = useState(false)
+
+    const likeHandler =()=>{
+        {/*if it isliked===true subtract one else add one */}
+        setLike(isliked ? like-1 : like+1)
+
+        /*initially isliked is false thus we take like+1,after clicking we make it true(opposite), 
+        them in the setLike method isLiked will be true and return like-1
+        */
+        setIsLiked(!isliked)
+    }
     return(
         <div className="Post">
             <div className="postWrapper">
@@ -30,9 +42,9 @@ export default function Post({post}){
                 </div>
                 <div className="postBottom">
                     <div className="postBottomLeft">
-                        <img className="likeIcon" src="/assets/heart.png" alt="" />
-                        <img className="likeIcon" src="/assets/like.png" alt="" />
-                        <span className="postLikeCounter">{post.like} people liked</span>
+                        <img className="likeIcon" onClick={likeHandler} src="/assets/heart.png" alt="" />
+                        <img className="likeIcon" onClick={likeHandler} src="/assets/like.png" alt="" />
+                        <span className="postLikeCounter">{like} people liked</span>
                     </div>
                     <div className="postBottomRight">
                         <span className="postCommentText">{post.comment} comments</span>

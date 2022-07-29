@@ -1,6 +1,6 @@
 import "./showmore.css"
 
-/*note that the parameter is taken with the parameter*/ 
+/*note that the parameter is taken with the curly brackets*/ 
 export default function Showmore({user}){
     return(
         <li className="sidebarFriend">
