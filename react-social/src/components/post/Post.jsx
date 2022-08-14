@@ -8,6 +8,7 @@ export default function Post({post}){
     /*initial state is goin to be whatever number the post is set to initialy in the class*/ 
     const [like,setLike] = useState(post.like)
     const [isliked,setIsLiked] = useState(false)
+    const PF = process.env.REACT_APP_PUBLIC_FOLDER;
 
     const likeHandler =()=>{
         {/*if it isliked===true subtract one else add one */}
@@ -38,12 +39,12 @@ export default function Post({post}){
                 <div className="postCenter">
                      {/*put question mark cuz some post do not have description*/}
                     <span className="postText">{post?.desc}</span>
-                    <img className="postImg" src={post.photo} alt="" />
+                    <img className="postImg" src={PF + post.photo} alt="" />
                 </div>
                 <div className="postBottom">
                     <div className="postBottomLeft">
-                        <img className="likeIcon" onClick={likeHandler} src="/assets/heart.png" alt="" />
-                        <img className="likeIcon" onClick={likeHandler} src="/assets/like.png" alt="" />
+                        <img className="likeIcon" onClick={likeHandler} src={`${PF}heart.png`} alt="" />
+                        <img className="likeIcon" onClick={likeHandler} src={`${PF}like.png`} alt="" />
                         <span className="postLikeCounter">{like} people liked</span>
                     </div>
                     <div className="postBottomRight">
