@@ -1,14 +1,24 @@
 import "./post.css"
 import {MoreVert} from "@mui/icons-material"
-
-import {Users} from "../../dummyData"
-import { useState } from "react"
+import { useState,useEffect } from "react"
+import axios from "axios"
+import  {format} from "timeago.js"
 
 export default function Post({post}){
     /*initial state is goin to be whatever number the post is set to initialy in the class*/ 
-    const [like,setLike] = useState(post.like)
+    const [like,setLike] = useState(post.likes.length)
     const [isliked,setIsLiked] = useState(false)
+    const [user,setUser] = useState({});
     const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+
+    useEffect(()=>{
+
+        const fetchUser = async()=> {
+            const res = await axios.get(`users/${post.userId}`);
+            setUser(res.data);
+        };
+        fetchUser ();
+    },[])
 
     const likeHandler =()=>{
         {/*if it isliked===true subtract one else add one */}
@@ -26,11 +36,11 @@ export default function Post({post}){
                     <div className="postTopLeft">
                         
                         {/*each profile must correspond to the correct user,ie the user id's are equal*/ }
-                        <img className="postProfileImg" src={Users.filter(u=>u.id === post.userId)[0].profilePicture} alt="" />
+                        <img className="postProfileImg" src={user.profilePicture || PF+"person/noavatar.png " } alt="" />
                         
                         {/*each post must correspond to the correct user,ie the user id's are equal*/ }
-                        <span className="postUserName">{Users.filter(u=>u.id === post.userId)[0].username}</span>
-                        <span className="postDate">{post.date}</span>                    
+                        <span className="postUserName">{user.username}</span>
+                        <span className="postDate">{format(post.createdAt)}</span>                    
                     </div>
                     <div className="postTopRight">
                         <MoreVert/>
@@ -39,7 +49,7 @@ export default function Post({post}){
                 <div className="postCenter">
                      {/*put question mark cuz some post do not have description*/}
                     <span className="postText">{post?.desc}</span>
-                    <img className="postImg" src={PF + post.photo} alt="" />
+                    <img className="postImg" src={PF + post.img} alt="" />
                 </div>
                 <div className="postBottom">
                     <div className="postBottomLeft">

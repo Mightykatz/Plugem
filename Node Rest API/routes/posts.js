@@ -86,10 +86,10 @@ router.get("/:id",async (req,res)=>{
 
 //get timeline posts (Aka Nested Asynchronous Fetch)
 
-router.get("/timeline/all",async (req,res)=>{
+router.get("/timeline/:userId",async (req,res)=>{
 
     try{
-        const currentUser = await User.findById(req.body.userId);
+        const currentUser = await User.findById(req.params.userId);
         const userPosts = await Post.find({ userId: currentUser._id});
 
         //using a map to get posts of current users friends
@@ -100,7 +100,7 @@ router.get("/timeline/all",async (req,res)=>{
         );
         
         //combine post of the current user and all currentUSers following on the timeline
-        res.json(userPosts.concat(...friendPosts))
+        res.status(200).json(userPosts.concat(...friendPosts))
         
     }catch(err){
         res.status(500).json(err)
